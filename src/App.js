@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { Routes, Route, Router } from 'react-router'
+import Entrenamiento from './components/Entrenamiento.js';
+import Menu from './components/Menu.js';
+import Programarentrenamiento from './components/Programarentrenamiento.js';
+import Register from './components/Register.js';
+
+import Sidebar from './ui/Sidebar.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='md:flex min-h-screen text-center text-3x1 text-red-700'>
+      <Sidebar />
+      <Routes>
+        <Route path="/menu" element={<Menu />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/entrenamiento" element={<Entrenamiento />} />
+        <Route path="/programarentrenamiento" element={<Programarentrenamiento />} />
+      </Routes>
     </div>
   );
 }
