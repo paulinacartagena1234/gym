@@ -11,12 +11,12 @@ function Register() {
         initialValues: {
             firstName: '',
             lastName: '',
-            age: 0,
+            age: '',
             department: '',
-            municipality: '',
+            municipality: ''
             //Colocar todos los campos
 
-        }, validationSchema: ({
+        }, validationSchema: Yup.object({
             firstName: Yup.string()
                 .min(3, 'El nombre debe tener minimo 3 caracters')
                 .required(),
@@ -26,14 +26,14 @@ function Register() {
             age: Yup.number().required().positive().integer(),
             //Validar todos los campos
             department: Yup.string()
-                .required(),
+                .required().oneOf(["Antioquia"]),
             municipality: Yup.string()
-                .required(),
+                .required().oneOf(["Barbosa", "Girardota", "Copacabana", "Bello", "Medellin", "Envigado", "Itagui", "Sabaneta", "La Estrella", "Caldas"]),
         }),
         onSubmit: user => {
             try {
                 firebase.db.collection('user').add(user);
-                //console.log(user)
+                // console.log(user)
             }
             catch (e) {
                 console.log('error: ', e)
@@ -42,7 +42,7 @@ function Register() {
     })
     return (
         <>
-            <div className='flex-1 text-center my-20'>
+            <div className='flex-1 justify-center text-center my-20'>
                 <form
                     onSubmit={formik.handleSubmit}
                 >
@@ -54,9 +54,8 @@ function Register() {
                         <div className="mt-2">
                             <input
                                 type="text"
-                                name="first-name"
-                                id="first-name"
-                                autoComplete="given-name"
+                                name="firstName"
+                                id="firstName"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value={formik.values.firstName}
                                 onChange={formik.handleChange}
@@ -78,9 +77,9 @@ function Register() {
                         <div className="mt-2">
                             <input
                                 type="text"
-                                name="last-name"
-                                id="last-name"
-                                autoComplete="family-name"
+                                name="lastName"
+                                id="lastName"
+
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value={formik.values.lastName}
                                 onChange={formik.handleChange}
@@ -102,9 +101,8 @@ function Register() {
                         <div className="mt-2">
                             <input
                                 type="number"
-                                name="Age"
-                                id="Age"
-                                autoComplete="age-name"
+                                name="age"
+                                id="age"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 value={formik.values.age}
                                 onChange={formik.handleChange}
@@ -126,13 +124,13 @@ function Register() {
                                 <select
                                     id="department"
                                     name="department"
-                                    autoComplete="department-name"
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                     value={formik.values.department}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                 >
-                                    <option value={'Antioquia'}>Antioquia</option>
+                                    <option value=''>Seleccionar</option>
+                                    <option value='Antioquia'>Antioquia</option>
                                 </select>
                             </div>
                         </div>
@@ -152,22 +150,21 @@ function Register() {
                             <select
                                 id="municipality"
                                 name="municipality"
-                                autoComplete="municipality-name"
                                 className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                                 value={formik.values.municipality}
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}
                             >
-                                <option>Barbosa</option>
-                                <option>Girardota</option>
-                                <option>Copacabana</option>
-                                <option>Bello</option>
-                                <option>Medellin</option>
-                                <option>Envigado</option>
-                                <option>Itagui</option>
-                                <option>Sabaneta</option>
-                                <option>La Estrella</option>
-                                <option>Caldas</option>
+                                <option value="Girardota">Girardota</option>
+                                <option value="Barbosa">Barbosa</option>
+                                <option value="Copacabana">Copacabana</option>
+                                <option value="Bello">Bello</option>
+                                <option value="Medellin">Medellin</option>
+                                <option value="Envigado">Envigado</option>
+                                <option value="Itagui">Itagui</option>
+                                <option value="Sabaneta">Sabaneta</option>
+                                <option value="La Estrella">La Estrella</option>
+                                <option value="Caldas">Caldas</option>
                             </select>
                         </div>
                     </div>
