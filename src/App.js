@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route, Router } from 'react-router'
+import { Routes, Route } from 'react-router'
 import Entrenamiento from './components/Entrenamiento.js';
 import Menu from './components/Menu.js';
 import Programarentrenamiento from './components/Programarentrenamiento.js';
@@ -9,7 +9,7 @@ import Sidebar from './ui/Sidebar.js';
 
 function App() {
   return (
-    <div className='md:flex min-h-screen text-center text-3x1 text-red-700'>
+    <div className='md:flex min-h-screen text-center text-3x1 text-gray-900'>
       <Sidebar />
       <Routes>
         <Route path="/menu" element={<Menu />} />
