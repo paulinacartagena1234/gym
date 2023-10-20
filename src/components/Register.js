@@ -5,7 +5,7 @@ import { FirebaseContext } from '../firebase'
 
 function Register() {
 
-    const firebase = useContext(FirebaseContext);
+    const { firebase } = useContext(FirebaseContext);
     //Validar Campos
     const formik = useFormik({
         initialValues: {
@@ -32,7 +32,7 @@ function Register() {
         }),
         onSubmit: user => {
             try {
-                firebase.db.collection('user').add(user)
+                firebase.db.collection('user').add(user);
                 //console.log(user)
             }
             catch (e) {
