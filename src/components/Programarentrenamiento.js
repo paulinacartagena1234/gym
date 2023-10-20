@@ -2,8 +2,8 @@ import React from 'react'
 
 function Programarentrenamiento() {
     return (
-        <div>
-            <h1 className='text-gray-900'>Programar entrenamiento</h1>
+        <div className='flex-1 justify-center text-center'>
+            <h1 className='block text-sm font-medium leading-6 text-gray-900'>Programar entrenamiento</h1>
             <label htmlFor="date" className="block text-sm font-medium leading-6 text-gray-900">
                 Fecha
             </label>
