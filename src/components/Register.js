@@ -69,7 +69,7 @@ function Register() {
                             <p>{formik.errors.firstName}</p>
                         </div>
                     ) : null}
-                    {/*Organizar cada uno de los inputs value, onChange, onBlur y la función de error despues del DIV*/}
+
                     <div className="sm:col-span-3">
                         <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900">
                             Last name

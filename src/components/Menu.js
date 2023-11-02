@@ -5,7 +5,7 @@ function Menu() {
     return (
         <>
             <h1 className=''>Bienvenido a SUPER BODY</h1>
-            <Link to="/Register">Registro</Link>
+            <h2><Link to="/Register">Registro</Link></h2>
         </>
     )
 }
